@@ -3,7 +3,7 @@
 ## Table: CareerLevel
 
 ### Business Purpose
-سطوح رشد شغلی هر Framework را تعریف می‌کند.
+سطوح رشد شغلی هر Framework را تعریف می‌کند. در صورت استفاده از نردبان (لدر) در این جدول تعریف خواهد شد.
 
 ### Columns
 
