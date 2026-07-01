@@ -9,10 +9,10 @@
 
 | Field | Type | Required | Description |
 |------|------|----------|-------------|
-| ID | bigint | Yes | شناسه یکتا |
+| ID | int | Yes | شناسه یکتا |
 | Code | nvarchar(50) | Yes | کد یکتا |
 | Name | nvarchar(200) | Yes | نام چارچوب |
-| Description | nvarchar(1000) | No | توضیحات |
+| Description | nvarchar(2000) | No | توضیحات |
 | IsDefault | bit | Yes | چارچوب پیش‌فرض سازمان |
 | IsActive | bit | Yes | فعال / غیرفعال |
 | DisplayOrder | int | No | ترتیب نمایش |
