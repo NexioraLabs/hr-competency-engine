@@ -26,11 +26,11 @@
 | TECH | L3 | Senior | 3 |
 | TECH | L4 | Lead | 4 |
 | TECH | L5 | Architect | 5 |
-| MGMT | M1 | Supervisor | 1 |
-| MGMT | M2 | Manager | 2 |
-| MGMT | M3 | Senior Manager | 3 |
-| MGMT | M4 | Director | 4 |
-| MGMT | M5 | Vice President | 5 |
+| SALES | S1 | Sales Representative | 1 |
+| SALES | S2 | Senior Sales Representative | 2 |
+| SALES | S3 | Account Executive | 3 |
+| SALES | S4 | Key Account Manager | 4 |
+| SALES | S5 | Sales Director | 5 |
 
 
 ### Relationships
