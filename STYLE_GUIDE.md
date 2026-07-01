@@ -47,7 +47,7 @@ Version: 1.0
 
 | مفهوم | نوع پیشنهادی |
 |--------|--------------|
-| ID | bigint |
+| ID | int |
 | Code | nvarchar(50) |
 | Name | nvarchar(200) |
 | Description | nvarchar(2000) |
