@@ -1,4 +1,4 @@
- # KnowledgeModel.md (حدود ۳۰–۵۰ صفحه)
+ # KnowledgeModel.md
 
 Vision
 
