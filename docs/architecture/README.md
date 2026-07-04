@@ -1,22 +1,42 @@
-KnowledgeModel.md (حدود ۳۰–۵۰ صفحه)
+ # KnowledgeModel.md (حدود ۳۰–۵۰ صفحه)
+
 Vision
+
 Design Principles
+
 Domain Model
+
 Meta Model
+
 Architecture Rules
+
 Validation (OaSIS / O*NET / ESCO)
-CoreDataModel.md
+
+# CoreDataModel.md
+
 تبدیل مدل مفهومی به PostgreSQL
 تمام جداول
+
 تمام کلیدها
+
 تمام Constraintها
+
 Naming Convention
-ImportArchitecture.md
+
+# ImportArchitecture.md
+
 Import Engine
+
 Mapping
+
 Merge
+
 Versioning
-KnowledgeAPI.md
+
+# KnowledgeAPI.md
+
 APIهای موردنیاز
-KnowledgeSDK.md
+
+# KnowledgeSDK.md
+
 نحوه توسعه Providerهای جدید
