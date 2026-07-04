@@ -77,6 +77,23 @@ docs/
 
 │
 
+└── 09-research/
+
+│   ├── oasis-analysis.md
+    
+│   ├── onet-analysis.md
+    
+│   ├── esco-analysis.md
+    
+│   ├── sfia-analysis.md
+   
+│   ├── iso10015-analysis.md
+    
+│    └── scientific-references.md
+
+│
+
 └── glossary/
+
 
     └── Glossary.md
