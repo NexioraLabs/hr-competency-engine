@@ -1,3 +1,12 @@
+---
+Entity: Role
+Entity ID: ENT-004
+Status: Draft
+Version: 1.0
+Last Updated: 2026-07-04
+Owner: NexioraLabs
+---
+
 # Data Dictionary
 
 ## Table: Role
