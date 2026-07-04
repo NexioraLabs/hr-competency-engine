@@ -1,6 +1,6 @@
 # Knowledge Model
 
-**Project:** HR Competency Engine
+**Project:** HR Competency Engine (Enterprise Competency Knowledge Platform)
 
 **Document ID:** KM-001
 
@@ -8,7 +8,7 @@
 
 **Status:** Working Draft
 
-**Last Updated:** YYYY-MM-DD
+**Last Updated:** 2026-04-07
 
 ---
 
