@@ -1,3 +1,12 @@
+---
+Entity: CareerLevel
+Entity ID: ENT-002
+Status: Draft
+Version: 1.0
+Last Updated: 2026-07-04
+Owner: NexioraLabs
+---
+
 # Data Dictionary
 
 ## Table: CareerLevel
