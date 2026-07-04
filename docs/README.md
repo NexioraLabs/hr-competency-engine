@@ -3,37 +3,37 @@ docs/
 
 ├── 01-architecture/
 
-│   ├── PlatformArchitecture.md
+    ├── PlatformArchitecture.md
 
-│   ├── KnowledgeModel.md
+    ├── KnowledgeModel.md
 
-│   ├── EventArchitecture.md
+    ├── EventArchitecture.md
 
-│   └── IntegrationArchitecture.md
+    └── IntegrationArchitecture.md
 
 │
 
 ├── 02-domain-model/
 
-│   ├── CareerFramework.md
+    ├── CareerFramework.md
 
-│   ├── CompetencyModel.md
+    ├── CompetencyModel.md
 
-│   ├── KnowledgeLibrary.md
+    ├── KnowledgeLibrary.md
 
-│   └── AssessmentModel.md
+    └── AssessmentModel.md
 
 │
 
 ├── 03-database/
 
-│   ├── TABLE_TEMPLATE.md
+    ├── TABLE_TEMPLATE.md
 
-│   ├── CareerFramework.md
+    ├── CareerFramework.md
 
-│   ├── Competency.md
+    ├── Competency.md
 
-│   └── ...
+    └── ...
 
 │
 
@@ -47,53 +47,52 @@ docs/
 
 ├── 06-reference-data/
 
-│   ├── oasis/
+    ├── oasis/
 
-│   ├── onet/
+    ├── onet/
 
-│   ├── esco/
+    ├── esco/
 
-│   └── samples/
+    └── samples/
 
 │
 
 ├── 07-decisions/
 
-│   ├── ADR-001.md
+    ├── ADR-001.md
 
-│   ├── ADR-002.md
+    ├── ADR-002.md
 
-│   └── ...
+    └── ...
 
 │
 
 ├── 08-guidelines/
 
-│   ├── DESIGN_RULES.md
+    ├── DESIGN_RULES.md
 
-│   ├── NAMING_CONVENTIONS.md
+    ├── NAMING_CONVENTIONS.md
 
-│   └── DOCUMENTATION_RULES.md
+    └── DOCUMENTATION_RULES.md
 
 │
 
 └── 09-research/
 
-│   ├── oasis-analysis.md
+    ├── oasis-analysis.md
     
-│   ├── onet-analysis.md
+    ├── onet-analysis.md
     
-│   ├── esco-analysis.md
+    ├── esco-analysis.md
     
-│   ├── sfia-analysis.md
+    ├── sfia-analysis.md
    
-│   ├── iso10015-analysis.md
+    ├── iso10015-analysis.md
     
-│    └── scientific-references.md
+     └── scientific-references.md
 
 │
 
 └── glossary/
-
 
     └── Glossary.md
