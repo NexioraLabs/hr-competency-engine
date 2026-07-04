@@ -3771,4 +3771,2026 @@ This preserves conceptual integrity and minimizes unnecessary complexity.
 
 End of Chapter 10
 
+# 11. Identity Model
+
+## 11.1 Purpose
+
+The Identity Model defines how every business object within the HR Competency Engine is uniquely identified, referenced, synchronized, and traced throughout its lifecycle.
+
+Identity is independent of storage technology, programming language, provider, and deployment model.
+
+Every entity, relationship, collection, version, and operational object shall conform to this model.
+
+The Identity Model guarantees that business meaning remains stable even when implementations evolve.
+
+---
+
+# 11.2 Identity Principles
+
+The platform adopts the following identity principles.
+
+### Principle 1
+
+Identity is immutable.
+
+Once assigned, an identity shall never change.
+
+Business properties may evolve.
+
+Identity shall not.
+
+---
+
+### Principle 2
+
+Identity is globally unique.
+
+Every canonical object has exactly one canonical identity.
+
+Duplicate identities are prohibited.
+
+---
+
+### Principle 3
+
+Identity is technology-independent.
+
+Identity shall not contain assumptions about:
+
+- Database technology
+- Programming language
+- Deployment environment
+- Provider
+- Organization
+
+---
+
+### Principle 4
+
+Identity survives migration.
+
+Moving data between providers or databases shall never create a new identity.
+
+---
+
+### Principle 5
+
+Identity is independent of naming.
+
+Changing the display name, translations, descriptions, or classifications of an object shall never affect its identity.
+
+---
+
+# 11.3 Identity Types
+
+The platform recognizes multiple identity types.
+
+### Canonical Identity
+
+The permanent identity assigned by the platform.
+
+Example:
+
+COMP-8f7c9f0d
+
+This identity never changes.
+
+---
+
+### External Identity
+
+Identifier assigned by an external provider.
+
+Examples:
+
+ESCO ID
+
+O*NET Code
+
+OaSIS Identifier
+
+Vendor-specific IDs
+
+Multiple external identities may reference the same canonical object.
+
+---
+
+### Organization Identity
+
+Organization-specific identifiers.
+
+Examples:
+
+Internal competency codes
+
+Internal job codes
+
+Internal role numbers
+
+These identities remain local to an organization.
+
+---
+
+### Temporary Identity
+
+Used during import, synchronization or draft creation.
+
+Temporary identities are replaced before publication.
+
+---
+
+# 11.4 Identity Scope
+
+Identity scope determines uniqueness.
+
+The platform defines four scopes.
+
+Global
+
+Unique across the platform.
+
+Library
+
+Unique within a knowledge library.
+
+Organization
+
+Unique within an organization.
+
+Version
+
+Unique within a published version.
+
+---
+
+# 11.5 Identity Ownership
+
+Every identity has exactly one owner.
+
+Ownership determines authority.
+
+Examples:
+
+Canonical Identity
+
+Platform
+
+External Identity
+
+External Provider
+
+Organization Identity
+
+Organization
+
+Temporary Identity
+
+Import Process
+
+Ownership shall never be ambiguous.
+
+---
+
+# 11.6 Identity Resolution
+
+Multiple identifiers may represent the same business concept.
+
+The platform resolves identities using canonical mapping.
+
+Example:
+
+ESCO
+
+↓
+
+Skill ES-458
+
+O*NET
+
+↓
+
+SK-112
+
+Customer Library
+
+↓
+
+PY-01
+
+↓
+
+Canonical Identity
+
+COMP-00000127
+
+Business logic shall always use the canonical identity.
+
+---
+
+# 11.7 Identity Lifecycle
+
+Identity follows the lifecycle of its owning object.
+
+Draft
+
+↓
+
+Validated
+
+↓
+
+Published
+
+↓
+
+Deprecated
+
+↓
+
+Archived
+
+Identity itself remains immutable throughout the lifecycle.
+
+---
+
+# 11.8 Identity Mapping
+
+Identity mapping connects provider-specific identifiers to canonical identities.
+
+Mappings record:
+
+- Provider
+- External Identifier
+- Canonical Identifier
+- Confidence
+- Mapping Method
+- Approval Status
+
+Mappings are versioned and auditable.
+
+---
+
+# 11.9 Duplicate Detection
+
+The platform shall detect potential duplicates before publication.
+
+Duplicate analysis may consider:
+
+- Name similarity
+- Synonyms
+- External identifiers
+- Semantic relationships
+- Classification
+- AI-assisted similarity
+
+Potential duplicates require human review.
+
+---
+
+# 11.10 Identity Merge
+
+When duplicates are confirmed, the platform performs a merge.
+
+Rules:
+
+- Canonical Identity is preserved.
+- External identities remain traceable.
+- Historical references remain valid.
+- Merge history is permanently recorded.
+
+No data shall be silently discarded.
+
+---
+
+# 11.11 Identity References
+
+Relationships, evaluations, evidence, and decisions shall reference business objects only through canonical identities.
+
+Display names shall never be used as references.
+
+---
+
+# 11.12 AI Considerations
+
+Artificial Intelligence may recommend:
+
+- duplicate candidates
+- identity mappings
+- synonym detection
+- semantic similarity
+
+AI shall never create or merge canonical identities without approval.
+
+---
+
+# 11.13 Architectural Consequences
+
+A stable identity model enables:
+
+- Provider independence
+- Incremental imports
+- Multi-library coexistence
+- Cross-version compatibility
+- AI reasoning
+- Graph traversal
+- Reliable synchronization
+- Long-term traceability
+
+The Identity Model is a foundational architectural component of the HR Competency Engine.
+
+---
+
+End of Chapter 11
+
+# 12. Attribute Model
+
+## 12.1 Purpose
+
+The Attribute Model defines how characteristics of business objects are represented, managed and interpreted across the HR Competency Engine.
+
+Attributes describe business objects.
+
+Attributes do not define identity.
+
+Identity answers:
+
+"What is this object?"
+
+Attributes answer:
+
+"What do we currently know about this object?"
+
+The Attribute Model provides a canonical, technology-independent representation of business information.
+
+---
+
+# 12.2 Identity versus Identifier versus Attribute
+
+The platform distinguishes three independent concepts.
+
+## Identity
+
+Represents the permanent business identity of an object.
+
+Example:
+
+COMP-00012345
+
+Identity never changes.
+
+---
+
+## Identifier
+
+Represents a reference used to locate an object.
+
+Examples:
+
+ESCO ID
+
+O*NET Code
+
+Internal Code
+
+UUID
+
+An object may have multiple identifiers.
+
+Identifiers may change.
+
+Identity does not.
+
+---
+
+## Attribute
+
+Represents descriptive information about an object.
+
+Examples:
+
+Name
+
+Description
+
+Language
+
+Required Level
+
+Importance
+
+Difficulty
+
+Category
+
+Attributes describe the object.
+
+They do not identify it.
+
+---
+
+# 12.3 Attribute Principles
+
+The platform follows these principles.
+
+### Principle 1
+
+Attributes never define business identity.
+
+---
+
+### Principle 2
+
+Attributes may evolve.
+
+Identity shall not.
+
+---
+
+### Principle 3
+
+Attributes belong to business semantics.
+
+They are not database columns.
+
+---
+
+### Principle 4
+
+Attributes may differ between providers.
+
+Canonical semantics remain unchanged.
+
+---
+
+### Principle 5
+
+Attributes are extensible.
+
+Organizations may introduce additional attributes without changing the canonical model.
+
+---
+
+# 12.4 Attribute Categories
+
+Attributes are classified into logical categories.
+
+## Descriptive
+
+Examples:
+
+Name
+
+Short Name
+
+Description
+
+Summary
+
+---
+
+## Classification
+
+Examples:
+
+Category
+
+Family
+
+Type
+
+Collection
+
+Domain
+
+---
+
+## Measurement
+
+Examples:
+
+Importance
+
+Difficulty
+
+Complexity
+
+Frequency
+
+Criticality
+
+---
+
+## Administrative
+
+Examples:
+
+Status
+
+Publication State
+
+Owner
+
+Approval Status
+
+---
+
+## Localization
+
+Examples:
+
+Display Name
+
+Translated Description
+
+Localized Notes
+
+---
+
+## Reference
+
+Examples:
+
+External Code
+
+Source System
+
+Original Provider
+
+Provider Version
+
+---
+
+## Computed
+
+Examples:
+
+Popularity
+
+Usage Count
+
+Confidence Score
+
+Coverage
+
+Similarity Score
+
+Computed attributes are derived rather than stored.
+
+---
+
+# 12.5 Attribute Data Types
+
+Canonical attribute types include:
+
+Text
+
+Long Text
+
+Number
+
+Boolean
+
+Date
+
+DateTime
+
+Enumeration
+
+Reference
+
+Collection
+
+Measurement
+
+Percentage
+
+Language-specific Text
+
+JSON
+
+Future implementations may introduce additional types.
+
+---
+
+# 12.6 Attribute Cardinality
+
+Attributes may have different multiplicities.
+
+Single Value
+
+Example:
+
+Difficulty
+
+---
+
+Multiple Values
+
+Example:
+
+Synonyms
+
+---
+
+Localized Values
+
+Example:
+
+Name
+
+English
+
+French
+
+Arabic
+
+Persian
+
+---
+
+Historical Values
+
+Example:
+
+Description across versions
+
+---
+
+# 12.7 Required versus Optional
+
+Each attribute defines its obligation level.
+
+Mandatory
+
+Recommended
+
+Optional
+
+Computed
+
+Derived
+
+Mandatory requirements are determined by business semantics, not implementation.
+
+---
+
+# 12.8 Attribute Constraints
+
+Attributes may define constraints.
+
+Examples:
+
+Minimum Length
+
+Maximum Length
+
+Allowed Enumeration
+
+Numeric Range
+
+Regular Expression
+
+Language Requirement
+
+Reference Integrity
+
+Validation rules are independent from storage technology.
+
+---
+
+# 12.9 Attribute Inheritance
+
+Some attributes may be inherited.
+
+Example:
+
+Occupation
+
+↓
+
+Role
+
+↓
+
+Position
+
+Inherited attributes remain explicitly traceable.
+
+Organizations may override inherited values according to policy.
+
+---
+
+# 12.10 Attribute Provenance
+
+Every attribute value may record its origin.
+
+Examples:
+
+Imported from ESCO
+
+Imported from O*NET
+
+Imported from OaSIS
+
+Created by Organization
+
+Suggested by AI
+
+Calculated by System
+
+This enables auditability and trust assessment.
+
+---
+
+# 12.11 Attribute Versioning
+
+Attributes participate in the platform versioning model.
+
+Changes create new attribute versions rather than silently replacing previous values.
+
+Historical values remain available for traceability.
+
+---
+
+# 12.12 Attribute Validation
+
+Before publication, the platform validates:
+
+Type compatibility
+
+Required values
+
+Constraint compliance
+
+Language consistency
+
+Reference integrity
+
+Semantic correctness
+
+Validation failures prevent publication.
+
+---
+
+# 12.13 AI Compatibility
+
+Artificial Intelligence may:
+
+Suggest attribute values
+
+Translate attributes
+
+Normalize terminology
+
+Generate summaries
+
+Detect inconsistencies
+
+Recommend missing values
+
+AI-generated attributes require organizational validation before publication.
+
+---
+
+# 12.14 Architectural Consequences
+
+The Attribute Model enables:
+
+Provider-independent imports
+
+Multi-language support
+
+Flexible extensions
+
+Semantic consistency
+
+Future schema evolution
+
+Knowledge graph enrichment
+
+Explainable AI
+
+Long-term maintainability
+
+The Attribute Model complements the Identity Model while preserving clear separation of responsibilities.
+
+---
+
+End of Chapter 12
+
+# 13. Temporal Model
+
+## 13.1 Purpose
+
+The Temporal Model defines how time is represented throughout the HR Competency Engine.
+
+Time affects knowledge, relationships, evidence, evaluations, decisions and organizational execution.
+
+The platform distinguishes multiple temporal concepts rather than relying on a single version number.
+
+This model guarantees historical traceability, reproducibility and long-term consistency.
+
+---
+
+# 13.2 Temporal Principles
+
+The platform follows these principles.
+
+### Principle 1
+
+Business time is independent of system time.
+
+---
+
+### Principle 2
+
+Every business object has a temporal lifecycle.
+
+---
+
+### Principle 3
+
+Historical information is preserved.
+
+History shall never be overwritten.
+
+---
+
+### Principle 4
+
+Version is only one temporal dimension.
+
+---
+
+### Principle 5
+
+Every business decision shall be reproducible using historical data.
+
+---
+
+# 13.3 Temporal Dimensions
+
+The platform recognizes multiple temporal dimensions.
+
+### Business Effective Time
+
+When a business object becomes valid.
+
+---
+
+### Publication Time
+
+When the object becomes available for use.
+
+---
+
+### System Time
+
+When the platform records a change.
+
+---
+
+### Review Time
+
+When the object is reviewed.
+
+---
+
+### Expiration Time
+
+When the object is no longer valid.
+
+---
+
+### Archive Time
+
+When the object becomes historical.
+
+---
+
+# 13.4 Version
+
+A Version represents a published state of an object.
+
+Version identifies business content—not technical revisions.
+
+Examples:
+
+OaSIS Library Version 2026
+
+ESCO Release 1.2
+
+Customer Library Version 5
+
+Every version is immutable after publication.
+
+---
+
+# 13.5 Draft Lifecycle
+
+Objects evolve through controlled states.
+
+Draft
+
+↓
+
+Under Review
+
+↓
+
+Approved
+
+↓
+
+Published
+
+↓
+
+Deprecated
+
+↓
+
+Archived
+
+Published versions are immutable.
+
+Corrections create new versions.
+
+---
+
+# 13.6 Effective Period
+
+Objects may define:
+
+Effective From
+
+Effective Until
+
+This period represents business validity.
+
+Publication date and effective date may differ.
+
+---
+
+# 13.7 Temporal Consistency
+
+Relationships shall connect temporally compatible objects.
+
+Examples:
+
+A published relationship cannot reference an unpublished entity.
+
+An evaluation cannot reference future evidence.
+
+A decision cannot reference expired policies unless explicitly permitted.
+
+---
+
+# 13.8 Version Scope
+
+Versions exist at multiple levels.
+
+Library Version
+
+Entity Version
+
+Relationship Version
+
+Attribute Version
+
+Import Version
+
+Policy Version
+
+Assessment Method Version
+
+Evaluation Strategy Version
+
+Each scope evolves independently while maintaining referential consistency.
+
+---
+
+# 13.9 Historical Traceability
+
+The platform preserves every published state.
+
+Users shall be able to answer questions such as:
+
+"What did the competency framework look like on a given date?"
+
+"What evaluation policy was active when this promotion decision was made?"
+
+Historical reconstruction is a mandatory capability.
+
+---
+
+# 13.10 Temporal References
+
+Business objects reference the appropriate temporal context.
+
+Examples:
+
+Evidence references the version of the assessment method used.
+
+Evaluation references the strategy version applied.
+
+Decision references the policy version in effect.
+
+This ensures reproducibility.
+
+---
+
+# 13.11 Deprecation
+
+Deprecation indicates that an object should no longer be used.
+
+Deprecated objects remain accessible for historical analysis.
+
+Deprecation never deletes historical references.
+
+---
+
+# 13.12 Replacement
+
+Deprecated objects may define replacement relationships.
+
+Examples:
+
+Old Competency
+
+↓
+
+Replaced By
+
+↓
+
+New Competency
+
+Historical records continue to reference the original object.
+
+Future processes use the replacement.
+
+---
+
+# 13.13 Synchronization
+
+External providers publish new releases over time.
+
+Synchronization shall:
+
+Import new versions
+
+Detect changes
+
+Preserve historical mappings
+
+Avoid breaking existing organizational data
+
+Support incremental updates
+
+---
+
+# 13.14 AI Compatibility
+
+AI recommendations shall include temporal awareness.
+
+Examples:
+
+Recommend only currently valid competencies.
+
+Avoid deprecated assessment methods.
+
+Use evidence within its validity period.
+
+Predict future readiness based on historical trends.
+
+Temporal reasoning is mandatory for AI-assisted recommendations.
+
+---
+
+# 13.15 Architectural Consequences
+
+The Temporal Model enables:
+
+Historical auditing
+
+Evidence aging
+
+Policy evolution
+
+Version coexistence
+
+Multi-provider synchronization
+
+Longitudinal analytics
+
+Learning history
+
+Career progression analysis
+
+Predictive AI
+
+Compliance with regulatory and organizational requirements
+
+Time is therefore treated as a first-class architectural concern.
+
+---
+
+End of Chapter 13
+
+# 14. Knowledge Governance & Stewardship Model
+
+## 14.1 Purpose
+
+The Knowledge Governance & Stewardship Model defines how reference knowledge is created, reviewed, approved, published, maintained and retired throughout its lifecycle.
+
+Its objective is to ensure that every published knowledge object is accurate, trustworthy, auditable and sustainably managed.
+
+Governance defines the rules.
+
+Stewardship defines the responsibilities.
+
+Together they ensure the long-term integrity of the platform.
+
+---
+
+# 14.2 Governance Principles
+
+The platform adopts the following governance principles.
+
+### Principle 1
+
+Every published knowledge object has an accountable owner.
+
+Ownership shall never be anonymous.
+
+---
+
+### Principle 2
+
+No knowledge object is published without review.
+
+Review is mandatory before publication unless an explicitly approved governance policy states otherwise.
+
+---
+
+### Principle 3
+
+Business semantics take precedence over technical convenience.
+
+Changes that improve implementation but alter business meaning require formal review.
+
+---
+
+### Principle 4
+
+Every governance action is auditable.
+
+Creation, review, approval, publication, deprecation and retirement shall all be permanently recorded.
+
+---
+
+### Principle 5
+
+Knowledge evolves through governance, not through direct editing.
+
+Published knowledge is immutable.
+
+Updates produce new governed versions.
+
+---
+
+# 14.3 Governance Roles
+
+The platform defines standard governance roles.
+
+## Knowledge Author
+
+Creates or updates draft knowledge.
+
+Responsible for correctness of submitted content.
+
+---
+
+## Knowledge Reviewer
+
+Validates business accuracy, semantic consistency and completeness.
+
+May request revisions.
+
+Cannot approve their own work unless governance policy explicitly allows it.
+
+---
+
+## Knowledge Publisher
+
+Approves reviewed knowledge for publication.
+
+Responsible for releasing official versions.
+
+---
+
+## Knowledge Steward
+
+Maintains long-term quality of a library.
+
+Monitors consistency.
+
+Coordinates corrections.
+
+Ensures provider synchronization.
+
+---
+
+## Knowledge Administrator
+
+Configures governance policies.
+
+Assigns governance responsibilities.
+
+Manages permissions.
+
+Does not automatically become content owner.
+
+---
+
+## AI Assistant
+
+May propose new knowledge, mappings, translations, classifications or relationships.
+
+AI is never a governance authority.
+
+Human approval is always required before publication.
+
+---
+
+# 14.4 Governance Workflow
+
+Knowledge follows a governed lifecycle.
+
+Idea
+
+↓
+
+Draft
+
+↓
+
+Internal Review
+
+↓
+
+Revision
+
+↓
+
+Approval
+
+↓
+
+Publication
+
+↓
+
+Monitoring
+
+↓
+
+Deprecation
+
+↓
+
+Retirement
+
+Each transition is governed by organizational policy.
+
+---
+
+# 14.5 Ownership
+
+Every governed object shall define:
+
+Business Owner
+
+Technical Steward (optional)
+
+Library Owner
+
+Publishing Authority
+
+Ownership is version-specific.
+
+Historical ownership shall be preserved.
+
+---
+
+# 14.6 Approval Policies
+
+Organizations may configure approval policies.
+
+Examples:
+
+Single Reviewer
+
+Dual Review
+
+Expert Committee
+
+Domain Approval Board
+
+Emergency Publication
+
+Policy selection depends on organizational governance requirements.
+
+---
+
+# 14.7 Stewardship Responsibilities
+
+Knowledge Stewards are responsible for:
+
+Maintaining semantic consistency.
+
+Detecting duplicate concepts.
+
+Monitoring provider updates.
+
+Managing deprecated concepts.
+
+Supervising mappings.
+
+Reviewing AI suggestions.
+
+Improving overall knowledge quality.
+
+Stewardship is continuous rather than event-driven.
+
+---
+
+# 14.8 Governance Metrics
+
+The platform may calculate governance indicators.
+
+Examples:
+
+Review completion rate
+
+Publication lead time
+
+Duplicate rate
+
+Knowledge freshness
+
+Coverage
+
+Approval backlog
+
+Library quality score
+
+These metrics support continuous improvement.
+
+---
+
+# 14.9 Auditability
+
+Every governance action shall record:
+
+Actor
+
+Timestamp
+
+Action
+
+Reason
+
+Affected Object
+
+Version
+
+Approval Context
+
+Audit records are immutable.
+
+---
+
+# 14.10 Exception Handling
+
+Governance policies may define controlled exceptions.
+
+Examples:
+
+Emergency publication.
+
+Temporary approval.
+
+Expedited review.
+
+Legacy provider import.
+
+Every exception shall require explicit justification and remain fully auditable.
+
+---
+
+# 14.11 Provider Governance
+
+Imported knowledge retains provider provenance.
+
+Provider updates are evaluated before adoption.
+
+Imported knowledge may be:
+
+Accepted
+
+Modified
+
+Rejected
+
+Deferred
+
+Organizations remain responsible for their published knowledge.
+
+---
+
+# 14.12 AI Governance
+
+AI-generated proposals are classified as draft knowledge.
+
+AI may recommend:
+
+New competencies.
+
+Relationship corrections.
+
+Translations.
+
+Mappings.
+
+Classifications.
+
+Descriptions.
+
+AI shall never publish knowledge autonomously.
+
+Organizations define approval policies for AI-assisted contributions.
+
+---
+
+# 14.13 Knowledge Quality Management
+
+Governance continuously monitors quality.
+
+Typical quality dimensions include:
+
+Accuracy
+
+Consistency
+
+Completeness
+
+Uniqueness
+
+Validity
+
+Timeliness
+
+Traceability
+
+Explainability
+
+Quality assessment supports prioritization of improvement activities.
+
+---
+
+# 14.14 Governance Events
+
+Examples of governance events include:
+
+Knowledge Created
+
+Knowledge Submitted
+
+Review Requested
+
+Review Completed
+
+Publication Approved
+
+Version Published
+
+Knowledge Deprecated
+
+Knowledge Retired
+
+Provider Update Detected
+
+AI Recommendation Submitted
+
+These events support integration, monitoring and analytics.
+
+---
+
+# 14.15 Architectural Consequences
+
+The Governance & Stewardship Model enables:
+
+Trusted knowledge libraries
+
+Collaborative maintenance
+
+Controlled evolution
+
+Regulatory compliance
+
+Auditability
+
+Multi-provider coexistence
+
+Enterprise-scale knowledge management
+
+Safe AI collaboration
+
+Long-term sustainability
+
+Knowledge governance is therefore a core architectural capability of the HR Competency Engine.
+
+---
+
+End of Chapter 14
+
+# 15. Knowledge Integrity & Validation Model
+
+## 15.1 Purpose
+
+The Knowledge Integrity & Validation Model defines how the platform protects the correctness, consistency, completeness, and semantic integrity of knowledge throughout its lifecycle.
+
+Validation is not limited to data quality.
+
+The platform validates the integrity of the entire knowledge graph.
+
+Every published knowledge object shall satisfy all applicable integrity rules.
+
+---
+
+# 15.2 Architectural Decisions
+
+## AD-15-001
+
+Validation is a business capability rather than a database capability.
+
+---
+
+## AD-15-002
+
+Semantic validation is mandatory before publication.
+
+---
+
+## AD-15-003
+
+Integrity rules are technology-independent.
+
+---
+
+## AD-15-004
+
+Knowledge quality takes precedence over import completeness.
+
+Invalid knowledge shall never be published merely to complete an import.
+
+---
+
+# 15.3 Validation Principles
+
+The platform follows these principles.
+
+### Principle 1
+
+Validation occurs throughout the lifecycle.
+
+Validation is not a single event.
+
+---
+
+### Principle 2
+
+Business validation is independent of implementation.
+
+---
+
+### Principle 3
+
+Every published object is semantically valid.
+
+---
+
+### Principle 4
+
+Validation rules are versioned.
+
+Organizations may evolve validation policies over time.
+
+---
+
+### Principle 5
+
+Validation shall be explainable.
+
+Every validation result shall include the rule, outcome and rationale.
+
+---
+
+# 15.4 Validation Levels
+
+Validation is performed at multiple levels.
+
+## Level 1 – Structural Validation
+
+Verifies required attributes.
+
+Checks data types.
+
+Checks cardinality.
+
+Checks mandatory relationships.
+
+Purpose:
+
+Ensure structural correctness.
+
+---
+
+## Level 2 – Referential Validation
+
+Verifies references.
+
+Checks canonical identities.
+
+Checks version compatibility.
+
+Checks library consistency.
+
+Purpose:
+
+Ensure referential integrity.
+
+---
+
+## Level 3 – Semantic Validation
+
+Verifies business meaning.
+
+Examples:
+
+A Skill cannot inherit from a Knowledge Area.
+
+An Ability cannot belong to a Technology taxonomy.
+
+A Work Context cannot be evaluated using a proficiency scale.
+
+Purpose:
+
+Protect semantic correctness.
+
+---
+
+## Level 4 – Temporal Validation
+
+Verifies:
+
+Effective periods.
+
+Publication states.
+
+Deprecated references.
+
+Historical consistency.
+
+Purpose:
+
+Ensure temporal integrity.
+
+---
+
+## Level 5 – Governance Validation
+
+Verifies:
+
+Approval workflow.
+
+Ownership.
+
+Required reviews.
+
+Publication authority.
+
+Purpose:
+
+Ensure governance compliance.
+
+---
+
+## Level 6 – Cross-Library Validation
+
+Verifies:
+
+Mapping consistency.
+
+Duplicate concepts.
+
+Provider conflicts.
+
+Canonical mappings.
+
+Purpose:
+
+Support multi-provider coexistence.
+
+---
+
+## Level 7 – AI Validation
+
+Verifies AI-generated content.
+
+Examples:
+
+Confidence threshold.
+
+Explanation availability.
+
+Supporting evidence.
+
+Policy compliance.
+
+Purpose:
+
+Prevent unreliable AI contributions.
+
+---
+
+# 15.5 Integrity Dimensions
+
+Knowledge integrity consists of multiple dimensions.
+
+## Structural Integrity
+
+The object is structurally complete.
+
+---
+
+## Semantic Integrity
+
+Business meaning is preserved.
+
+---
+
+## Referential Integrity
+
+References remain valid.
+
+---
+
+## Temporal Integrity
+
+Historical consistency is maintained.
+
+---
+
+## Governance Integrity
+
+Required approvals exist.
+
+---
+
+## Provider Integrity
+
+Imported knowledge preserves provenance.
+
+---
+
+## AI Integrity
+
+AI recommendations remain explainable.
+
+---
+
+# 15.6 Validation Rules
+
+Rules may apply to:
+
+Entity
+
+Attribute
+
+Relationship
+
+Collection
+
+Library
+
+Version
+
+Import
+
+Evaluation Strategy
+
+Decision Policy
+
+Assessment Method
+
+Rules are externally configurable.
+
+Business semantics remain independent from implementation.
+
+---
+
+# 15.7 Validation Outcomes
+
+Validation produces standardized outcomes.
+
+Valid
+
+Warning
+
+Error
+
+Critical
+
+Only valid objects may be published.
+
+Warnings may require organizational review.
+
+---
+
+# 15.8 Validation Evidence
+
+Every validation result records:
+
+Rule Identifier
+
+Object
+
+Version
+
+Timestamp
+
+Validator
+
+Outcome
+
+Explanation
+
+Supporting Evidence
+
+Validation history is immutable.
+
+---
+
+# 15.9 Duplicate Detection
+
+The platform continuously searches for duplicates.
+
+Detection methods include:
+
+Exact match
+
+Lexical similarity
+
+Synonym analysis
+
+Relationship similarity
+
+Embedding similarity
+
+AI semantic similarity
+
+Duplicate detection produces recommendations rather than automatic merges.
+
+---
+
+# 15.10 Conflict Detection
+
+Conflicts may occur between providers.
+
+Examples:
+
+Different classifications.
+
+Different parent concepts.
+
+Different competency definitions.
+
+Different proficiency scales.
+
+Conflicts require governance decisions.
+
+---
+
+# 15.11 Continuous Integrity Monitoring
+
+Integrity is continuously monitored.
+
+Examples:
+
+Broken relationships.
+
+Deprecated references.
+
+Expired mappings.
+
+Missing translations.
+
+Incomplete classifications.
+
+Organizations may define monitoring thresholds.
+
+---
+
+# 15.12 Validation Services
+
+The platform provides reusable validation services.
+
+Schema Validation
+
+Semantic Validation
+
+Relationship Validation
+
+Temporal Validation
+
+Provider Validation
+
+Import Validation
+
+AI Validation
+
+These services are shared by all business modules.
+
+---
+
+# 15.13 AI Support
+
+Artificial Intelligence may assist validation.
+
+AI may:
+
+Suggest corrections.
+
+Identify anomalies.
+
+Detect duplicates.
+
+Recommend classifications.
+
+Estimate confidence.
+
+AI shall never override mandatory integrity rules.
+
+---
+
+# 15.14 Quality Indicators
+
+Integrity metrics include:
+
+Completeness
+
+Consistency
+
+Coverage
+
+Uniqueness
+
+Freshness
+
+Mapping Accuracy
+
+Duplicate Rate
+
+Validation Pass Rate
+
+Organizations may define additional indicators.
+
+---
+
+# 15.15 Architectural Consequences
+
+The Knowledge Integrity Model enables:
+
+Reliable imports
+
+High-quality libraries
+
+Safe AI collaboration
+
+Explainable validation
+
+Enterprise governance
+
+Provider coexistence
+
+Long-term maintainability
+
+Knowledge integrity is therefore treated as a core architectural capability rather than a technical implementation detail.
+
+---
+
+End of Chapter 15
 
