@@ -9,3 +9,34 @@
 | **Organization**             | ⭐⭐⭐⭐☆ | 7      |
 | **Runtime**                  | ⭐⭐⭐⭐☆ | 8      |
 | **AI & Intelligence**        | ⭐⭐⭐⭐⭐ | 9      |
+
+
+01-meta-model
+
+    KnowledgeObject
+    
+    SemanticRelationship
+    
+    ObjectType
+    
+    RelationshipType
+
+02-domain-model
+
+    Competency
+    
+    Skill
+    
+    Knowledge
+    
+    Ability
+    
+    Behavior
+    
+    Role
+    
+    Occupation
+    
+    Assessment
+    LearningActivity
+    ...
