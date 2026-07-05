@@ -35,20 +35,28 @@
 
 02-domain-model
 
-    Competency
-    
-    Skill
-    
-    Knowledge
-    
-    Ability
-    
-    Behavior
-    
-    Role
-    
-    Occupation
-    
-    Assessment
+HumanCapabilityContext.md
+
+        ↓
+        
+CapabilityMetaModel.md   ← (جدید)
+
+        ↓
+        
+HumanCapabilityOntology.md
+
+        ↓
+        
+Competency.md
+
+Skill.md
+
+Knowledge.md
+
+Ability.md
+
+Behavior.md
+
+
     LearningActivity
     ...
