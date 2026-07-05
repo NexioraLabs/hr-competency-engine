@@ -19,6 +19,8 @@
     
     SemanticPredicate
 
+    KnowledgeProperty
+
 02-domain-model
 
     Competency
