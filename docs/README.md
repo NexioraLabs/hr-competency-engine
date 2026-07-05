@@ -29,29 +29,31 @@ docs/
 
     11 Knowledge Object Model   ← جدید
 
-    12 Identity Model
+    12 Knowledge Metadata Model
 
-    13 Attribute Model
+    13 Identity Model
 
-    14 Temporal Model
+    14 Attribute Model
 
-    15 Governance Model
+    15 Temporal Model
 
-    16 Provenance Model         ← جدید
+    16 Governance Model
 
-    17 Integrity Model
+    17 Provenance Model         ← جدید
 
-    18 Acquisition Model
+    18 Integrity Model
 
-    19 Evolution Model
+    19 Acquisition Model
 
-    20 Measurement Model        ← جدید
+    20 Evolution Model
 
-    21 Knowledge Graph Model    ← جدید
+    21 Measurement Model        ← جدید
 
-    22 Query & Reasoning Model  ← جدید
+    22 Knowledge Graph Model    ← جدید
 
-    23 Canonical Architecture Summary
+    23 Query & Reasoning Model  ← جدید
+
+    24 Canonical Architecture Summary
 
     ├── EventArchitecture.md
 
