@@ -53,7 +53,11 @@ docs/
 
     23 Query & Reasoning Model  ← جدید
 
-    24 Canonical Architecture Summary
+    24 Canonical Architecture Summary ؟؟
+
+    24 Semantic Constraints Model  جدید
+    
+    25 Canonical Modeling Guidelines ؟؟
 
     ├── EventArchitecture.md
 
