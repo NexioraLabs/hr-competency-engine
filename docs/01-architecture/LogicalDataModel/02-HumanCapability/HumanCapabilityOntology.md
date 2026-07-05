@@ -30,9 +30,16 @@ Taxonomy Principles
 Capability Lifecycle
 
 Crosswalk with OaSIS, O*NET, ESCO, SHRM, CIPD
+
 AI Interpretation Model
+
 Knowledge Graph Representation
+
 Extensibility Rules
+
 Design Guidelines
+
 Examples
+
 References
+
