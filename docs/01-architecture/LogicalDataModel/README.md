@@ -17,9 +17,7 @@
     
     SemanticRelationship
     
-    ObjectType
-    
-    RelationshipType
+    SemanticPredicate
 
 02-domain-model
 
